@@ -13,7 +13,11 @@ def index():
 @route("/chat", method='POST')
 def chat():
     user_message = request.POST.get('msg')
-    return json.dumps({"animation": "inlove", "msg": user_message})
+    boto_message = boto_response(user_message)
+    return json.dumps({"animation": "inlove", "msg": boto_message})
+
+def boto_response(message):
+    return("poopies")
 
 
 @route("/test", method='POST')

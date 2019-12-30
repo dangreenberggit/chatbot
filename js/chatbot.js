@@ -72,7 +72,7 @@ ChatBot.initSpeechConfig = function () {
         ChatBot.speechConfig = new SpeechSynthesisUtterance();
         ChatBot.speechConfig.lang = 'en-US';
         ChatBot.speechConfig.rate = 1.6;
-        ChatBot.speechConfig.pitch = 5;
+        ChatBot.speechConfig.pitch = 4;
         ChatBot.speechConfig.onend = function (event) {
             $("#speak-indicator").addClass("hidden");
         }
