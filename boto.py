@@ -17,7 +17,7 @@ def chat():
     boto_message = boto_response(user_message)
     return json.dumps({"animation": "inlove", "msg": boto_message})
 
-def boto_response(message):
+def boto_response(user_message):
     return(bot_output["scary"])
 
 
