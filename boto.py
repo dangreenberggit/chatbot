@@ -22,7 +22,7 @@ def boto_response(user_message):
     for string in bot_hearing["afraid"]:
         if string in user_message:
             animation = "afraid"
-            boto_message = bot_saying["afraid"]
+            boto_message = random.choice(bot_saying["afraid"])
 
     return {"animation": animation, "msg": boto_message}
 
