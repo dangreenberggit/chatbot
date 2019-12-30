@@ -1,7 +1,7 @@
-bot_input = {
-    "scary": "woah",
+bot_hearing = {
+    "afraid": "snakes"
 }
 
-bot_output = {
-    "scary": "oh em gee!",
+bot_saying = {
+    "afraid": ["oh em gee!", "literally shaking rn"]
 }

@@ -3,7 +3,8 @@ This is the template server side for ChatBot
 """
 from bottle import route, run, template, static_file, request
 import json
-from chats import bot_input, bot_output
+import random
+from chats import bot_hearing, bot_saying
 
 
 @route('/', method='GET')
@@ -15,11 +16,15 @@ def index():
 def chat():
     user_message = request.POST.get('msg')
     boto_message = boto_response(user_message)
-    return json.dumps({"animation": "inlove", "msg": boto_message})
+    return json.dumps(boto_message)
 
 def boto_response(user_message):
-    return(bot_output["scary"])
+    for string in bot_hearing["afraid"]:
+        if string in user_message:
+            animation = "afraid"
+            boto_message = bot_saying["afraid"]
 
+    return {"animation": animation, "msg": boto_message}
 
 @route("/test", method='POST')
 def chat():
