@@ -4,7 +4,7 @@ This is the template server side for ChatBot
 from bottle import route, run, template, static_file, request
 import json
 import random
-from chats import bot_hearing, bot_saying
+import chats
 
 
 @route('/', method='GET')
@@ -19,10 +19,16 @@ def chat():
     return json.dumps(boto_message)
 
 def boto_response(user_message):
-    for string in bot_hearing["afraid"]:
+
+    user_message.split()
+    if any(user_message in chats.bot_hearing["swearing"]):
+        animation: "no"
+        boto_message = random.choice(chats.bot_saying["swearing"])
+
+    for string in chats.bot_hearing["afraid"]:
         if string in user_message:
             animation = "afraid"
-            boto_message = random.choice(bot_saying["afraid"])
+            boto_message = random.choice(chats.bot_saying["afraid"])
 
     return {"animation": animation, "msg": boto_message}
 

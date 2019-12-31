@@ -1,7 +1,9 @@
 bot_hearing = {
-    "afraid": "snakes"
+    "swearing": "fuck",
+    "afraid": "snakes",
 }
 
 bot_saying = {
-    "afraid": ["oh em gee!", "literally shaking rn"]
+    "swearing": "no, fuck you, sir",
+    "afraid": ["oh em gee!", "literally shaking rn"],
 }
