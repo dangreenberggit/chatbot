@@ -22,30 +22,36 @@ def chat():
 def boto_response(user_message):
 
     user_message.lower()
-    boto_text = "no response assigned"
-    swear_counter = 0
-
     split_user_message = user_message.split(" ")
 
-    if swear_counter == 3:
+    if chats.name_checked == 0:
+        name = split_user_message[-1]
+        chats.name = name.capitalize()
+        chats.name_checked = 1
+        animation = "ok"
+        boto_text = f"hi {chats.name}! {random.choice(chats.bot_saying['greeting'])}"
+
+    elif cats.swear_counter == 3:
         animation = "takeoff"
         boto_text = "That's it. Screw you guys, I'm going home."
 
-    if any(swear in split_user_message for swear in chats.bot_hearing["swearing"]):
+    elif any(swear in split_user_message for swear in chats.bot_hearing["swearing"]):
         animation = "no"
-        print("curse registered")
         boto_text = random.choice(chats.bot_saying["swearing"])
-        swear_counter += 1
+        chats.swear_counter += 1
 
-    if check_search(user_message):
+    elif check_search(user_message):
         animation = "excited"
         boto_text = google_search.chatbot_query(user_message)
 
-    if check_keywords(user_message, chats.bot_hearing["afraid"]):
-        animation = "afraid"
-        boto_text = random.choice(chats.bot_saying["afraid"])
+    elif keyword_check(user_message):
+        animation, boto_text = keyword_response(user_message)
 
-    return {"animation": animation, "msg":boto_text}
+    else:
+        animation = "confused"
+        boto_text = random.choice(chats.bot_saying["confused"]) + user_message
+
+    return {"animation": animation, "msg": boto_text}
 
 def check_search(message):
     search_triggers = ["who", "what", "when", "why"]
@@ -60,10 +66,18 @@ def check_search(message):
     else:
         return False
 
-def check_keywords(message, hearing):
-    for word in hearing:
-        if word in message:
-            return True
+def keyword_check(user_message):
+    for key in chats.bot_hearing:
+        for word in chats.bot_hearing[key]:
+            if word in user_message:
+                return True
+
+def keyword_response(user_message):
+    for key in chats.bot_hearing:
+        for word in chats.bot_hearing[key]:
+            if word in user_message:
+                response = random.choice(chats.bot_saying[key])
+                return [key, response]
 
 @route("/test", method='POST')
 def chat():
