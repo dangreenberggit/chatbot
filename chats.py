@@ -11,7 +11,7 @@ bot_hearing = {
     "heartbroke": ["hate", "leav", "over"],
     "inlove": ["love you", "like you", "ask me"],
     "laughing": ["okay"],
-    "money": ["cost", "cash", "price", "pay"],
+    "money": ["cost", "cash", "price", "pay", "money"],
     "no": ["do you", "are you", "would you"],
     "ok": [],
 }
@@ -43,9 +43,8 @@ bot_saying = {
                "Let's test your RAM capacity",
                ],
     "money": ["it takes money to make money", "dollah dollah bills"],
-    "no": ["I've mastered the art of saying NO"],
+    "no": ["I've mastered the art of saying NO", "nope."],
     "greeting": ["Pleased to meet you", "Great to meet you",],
-
 }
 
 swear_counter = 0

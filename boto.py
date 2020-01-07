@@ -29,9 +29,9 @@ def boto_response(user_message):
         chats.name = name.capitalize()
         chats.name_checked = 1
         animation = "ok"
-        boto_text = f"hi {chats.name}! {random.choice(chats.bot_saying['greeting'])}"
+        boto_text = f"hi, {chats.name}! {random.choice(chats.bot_saying['greeting'])}"
 
-    elif cats.swear_counter == 3:
+    elif chats.swear_counter == 3:
         animation = "takeoff"
         boto_text = "That's it. Screw you guys, I'm going home."
 
