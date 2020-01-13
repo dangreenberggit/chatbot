@@ -5,7 +5,7 @@ from bottle import route, run, template, static_file, request
 import json
 import random
 import chats
-import google_search
+import search_with_google
 
 
 @route('/', method='GET')
@@ -42,7 +42,7 @@ def boto_response(user_message):
 
     elif check_search(user_message):
         animation = "excited"
-        boto_text = google_search.chatbot_query(user_message)
+        boto_text = search_with_google.chatbot_query(user_message)
 
     elif keyword_check(user_message):
         animation, boto_text = keyword_response(user_message)
